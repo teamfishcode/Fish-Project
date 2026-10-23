@@ -1,58 +1,210 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fish Project</title>
+  <title>Zebrafish Heart Rate Project</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f4f6f8;
+      background-color: #f4f6f8;
       color: #222;
     }
 
     header {
-      background: #234e70;
+      background-color: #234e70;
       color: white;
-      padding: 40px 20px;
+      padding: 35px 20px;
       text-align: center;
     }
 
+    header h1 {
+      margin: 0;
+    }
+
     nav {
-      background: #16364f;
-      padding: 14px;
+      background-color: #16364f;
+      padding: 12px;
       text-align: center;
     }
 
     nav a {
       color: white;
-      margin: 0 12px;
       text-decoration: none;
+      margin: 0 12px;
     }
 
     main {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 25px;
-      background: white;
-      border-radius: 10px;
+      max-width: 900px;
+      margin: 25px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #234e70;
+    }
+
+    h3 {
+      margin-top: 25px;
+    }
+
+    .project-image {
+      display: block;
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      margin: 15px auto 5px auto;
+    }
+
+    .wide-image {
+      max-width: 850px;
+    }
+
+    .caption {
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #555;
     }
   </style>
 </head>
+
 <body>
+
   <header>
-    <h1>Fish Project</h1>
-    <p></p>
+    <h1>Zebrafish Heart Rate Group Project</h1>
+    
   </header>
 
   <nav>
     <a href="#about">About</a>
     <a href="#project">Our Project</a>
-    <a href="#contact">Contact</a>
+    <a href="#anatomy">Anatomy</a>
+    
   </nav>
 
+  <main>
+
+    <section id="about">
+      <h2>About Zebrafish</h2>
+
+      <p>
+        Zebrafish are commonly used in scientific research because they are
+        small, develop quickly and their larvae are transparent. This makes
+        it possible to observe internal structures such as the heart during
+        early development.
+      </p>
+
+      <img src="fishimages/zebrafish-larvae-diagram.jpg"
+           alt="Side view anatomy diagram of a zebrafish larva"
+           class="project-image wide-image">
+
+      <p class="caption">
+        Side view showing the anatomy of a zebrafish larva.
+      </p>
+    </section>
+
+
+    <section id="project">
+      <h2>Our Project</h2>
+
+      <p>
+        The aim of this project is to develop image analysis
+        from videos of freely swimming, untranquillised zebrafish larvae.
+      </p>
+
+      <p>
+        The project will involve image processing and segmentation to identify
+        the zebrafish and heart region. Changes in the heart region over time
+        can then be analysed to estimate the heart rate.
+      </p>
+
+      <p>
+        Avoiding tranquillisation is useful because it allows measurements to
+        be taken while the zebrafish are swimming normally, reducing the effect
+        that sedation could have on the measured heartbeat.
+      </p>
+    </section>
+
+
+    <section id="anatomy">
+      <h2>Zebrafish Heart Anatomy</h2>
+
+      <p>
+        The images below show cross sections of zebrafish at different stages
+        of development. The atrium and ventricle can be seen in both images.
+      </p>
+
+      <h3>48 hour zebrafish</h3>
+
+      <img src="fishimages/zebrafish-heart-48hr.jpg"
+           alt="Zebrafish heart anatomy at 48 hours"
+           class="project-image">
+
+      <p class="caption">
+        Cross-section of a zebrafish showing the atrium and ventricle at 48 hours.
+      </p>
+
+      <h3>5 day zebrafish</h3>
+
+      <img src="fishimages/zebrafish-heart-5-days.jpg"
+           alt="Zebrafish heart anatomy at 5 days"
+           class="project-image">
+
+      <p class="caption">
+        Cross-section of a zebrafish showing the heart at 5 days.
+      </p>
+    </section>
+
+
+    <section id="models">
+      <h2>3D Zebrafish Model</h2>
+
+      <p>
+        These images show plan and side views of a 3D zebrafish model.
+        They help show the position of different structures within the fish.
+      </p>
+
+      <h3>Side view</h3>
+
+      <img src="fishimages/side-view-33dpf.png"
+           alt="Side view of 3D zebrafish model"
+           class="project-image wide-image">
+
+      <p class="caption">
+        Side view of the 3D zebrafish model.
+      </p>
+
+      <h3>Plan view</h3>
+
+      <img src="fishimages/plan-view-33dpf.png"
+           alt="Plan view of 3D zebrafish model"
+           class="project-image wide-image">
+
+      <p class="caption">
+        Plan view of the 3D zebrafish model.
+      </p>
+    </section>
+
   </main>
+
+  <footer>
+    Fish Project
+  </footer>
+
 </body>
 </html>
