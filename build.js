@@ -38,33 +38,28 @@ html = html.replace(citationPattern, (_, key) =>
   `[${citedKeys.indexOf(key.trim()) + 1}]`
 );
 
-const references = citedKeys.map((key, index) => {
-  const entry = new Cite([entries.get(key)]);
-  const rendered = entry.format("bibliography", {
-    format: "html",
-    template: styleName,
-    lang: "en-GB"
-  });
 
-  const match = rendered.match(
-    /<div class="csl-entry"[^>]*>([\s\S]*?)<\/div>/
-  );
+const citedEntries = new Cite(
+  citedKeys.map(key => entries.get(key))
+);
 
-  if (!match) {
-    throw new Error(`Could not format reference "${key}"`);
-  }
+const references = citedEntries.format("bibliography", {
+  format: "html",
+  template: styleName,
+  lang: "en-GB"
+});
 
-  return `<li value="${index + 1}">${match[1]}</li>`;
-}).join("\n");
 
 if (!html.includes('<div id="references"></div>')) {
   throw new Error('Add <div id="references"></div> to index.html');
 }
 
+
 html = html.replace(
   '<div id="references"></div>',
-  `<ol id="references">\n${references}\n</ol>`
+  `<div id="references">\n${references}\n</div>`
 );
+
 
 fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(output, { recursive: true });
