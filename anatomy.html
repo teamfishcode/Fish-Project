@@ -59,6 +59,33 @@
       padding: 20px;
       color: #555;
     }
+    .subfigure-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.subfigure {
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.subfigure .project-image {
+    width: 100%;
+    height: auto;
+    margin: 15px auto 5px auto;
+}
+
+.subcaption {
+    text-align: center;
+    color: #555;
+    font-size: 13px;
+    margin-top: 5px;
+}
   </style>
 </head>
 <body>
@@ -128,7 +155,7 @@
 <section>
       <h2>Finding the Heart in Our Data</h2>
 </p> 
-  At the very front of the heart lies the Bulbus Aortis. This lies underneath the parts of the brain called the Tectum, valvula cerebelli and fifth branchial arch, as can be seen in <a href="#fig-heart-brain" class="figure-ref"></a>.
+  At the very front of the heart lies the Bulbus Aortis. This lies underneath the parts of the brain called the Tectum, valvula cerebelli and fifth branchial arch, as can be seen in <a href="#fig-heart-brain" class="figure-ref"></a>. Thus, the front of teh heart is expected to lie just behind the eyes. The exact placement of the front and the back of teh heart is highlighted in <a href="#fig-level-placement" class="figure-ref"></a> a), and, when compared with b) of teh same figure, it can be seen that the back of teh heart is approximately in line with where the pectoral fins are attached.
 </p>
 
 
@@ -146,6 +173,47 @@
 
 </div>
 
+<div id="fig-level-placement" class="project-figure">
+
+    <div class="subfigure-container">
+
+        <div class="subfigure">
+            <img src="fishimages/fig-lower-level-placement.jpg"
+                 alt="Heart circled in red to show placement"
+                 class="project-image">
+            <p class="subcaption">(a)The location of the heart is circled in red with the vertical red lines showing the boundaries of the front and back of the heart.</p>
+        </div>
+
+        <div class="subfigure">
+            <img src="fishimages/fig-upper-level-placement.png"
+                 alt="Diagram of one layer above what figure a shows."
+                 class="project-image">
+            <p class="subcaption">(b) An image showing the layer above the heart from a plan view to show th location of the heart relative to features visible from the top of the fish.</p>
+        </div>
+
+    </div>
+
+    <p class="caption">
+        Images showing the location of the heart in a 5 day old zebrafish, with different layers of teh fish shown for comparison.
+    </p>
+
+</div>
+
+Based on the above, we have then estimated the location of the heart in our images of zebrafish, as can be seen in <a href="#our-image-circled" class="figure-ref"></a>. In the data given to us, the fins are just visible and the ears can be clealy seen as two black bulbs. By comparing the position of these to the figure above, the expected area of the heart was circled.
+
+<div id="our-image-circled" class="project-figure">
+
+    <img src="fishimages/our-image-circled.png"
+         alt="One of our zebrafish images with the approximated location of teh heart circled"
+         class="project-image wide-image">
+
+    <p class="caption">
+       One of our zebrafish images with our approximation of the location of the heart circled.
+    </p>
+
+</div>
+
+  
   </main>
 
   <footer>
