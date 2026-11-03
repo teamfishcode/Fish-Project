@@ -135,7 +135,7 @@
       
 <div id="fig-heart-brain" class="project-figure">
 
-    <img src="fig-heart-brain.jpg"
+    <img src="fishimages/fig-heart-brain.jpg"
          alt="Sliced image of a 5 day old fish"
          class="project-image wide-image">
 
@@ -154,20 +154,36 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const figures = document.querySelectorAll(".project-figure");
+    const figures = [...document.querySelectorAll(".project-figure")];
 
+    // Automatically number captions
     figures.forEach((figure, index) => {
 
         const caption = figure.querySelector(".caption");
-
         const number = index + 1;
 
-        caption.innerHTML =
-            `<strong>Figure ${number}.</strong> ` + caption.innerHTML;
+        if (caption) {
+            const label = document.createElement("strong");
+            label.textContent = `Figure ${number}. `;
+            caption.prepend(label);
+        }
+    });
+
+    // Automatically number references in the text
+    document.querySelectorAll(".figure-ref").forEach(link => {
+
+        const id = link.getAttribute("href").substring(1);
+        const figure = document.getElementById(id);
+        const number = figures.indexOf(figure) + 1;
+
+        if (figure && number > 0) {
+            link.textContent = `Figure ${number}`;
+        }
 
     });
 
 });
+</script>
 </script>
   
 </body>
