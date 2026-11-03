@@ -133,16 +133,18 @@
 
 
       
-      <figure id="fig-heart-brain" class="project-figure">
-    <img src="fishimages/5 day Zebrafish heart_brain diagram.jpg"
+<div id="fig-heart-brain" class="project-figure">
+
+    <img src="fig-heart-brain.jpg"
          alt="Sliced image of a 5 day old fish"
          class="project-image wide-image">
 
-    <figcaption>
+    <p class="caption">
         An image of a slice of a 5 day old fish, showing
         the relative position of the heart to sections of the brain.
-    </figcaption>
-</figure>
+    </p>
+
+</div>
 
   </main>
 
@@ -152,11 +154,11 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const figures = document.querySelectorAll("figure");
+    const figures = document.querySelectorAll(".project-figure");
 
     figures.forEach((figure, index) => {
 
-        const caption = figure.querySelector("figcaption");
+        const caption = figure.querySelector(".caption");
 
         const number = index + 1;
 
