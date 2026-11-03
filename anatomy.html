@@ -79,7 +79,7 @@
 
       <p>
         The images below show cross sections of zebrafish at different stages
-        of development. The atrium and ventricle can be seen in both images.
+        of development. The atrium and ventricle can be seen in both images, with the ventricle found at the front, and the atrium behind it <span data-cite="in_vivo_study_cardiac_mechano_electric_mechanical_coupling_heart_development"></span>. The ventricle is the cavity in the heart that expands and compresses to push blood aroud the body, thus we expect to see pulsing mostly at the front of the heart. 
       </p>
 
       <h3>48 hour zebrafish</h3>
@@ -123,10 +123,45 @@
         Plan view of the 3D zebrafish model.
       </p>
     </section>
+
+
+<section>
+      <h2>Finding the Heart in Our Data</h2>
+</p> 
+  At the very front of the heart lies the Bulbus Aortis. This lies underneath the parts of the brain called the Tectum, valvula cerebelli and fifth branchial arch, as can be seen 
+  
+</section>
+    <figure class="figure">
+    <img src="images/experiment1.png" alt="Experimental setup">
+    <figcaption>
+        Experimental setup
+    </figcaption>
+</figure>
+
   </main>
 
   <footer>
     Fish Project
   </footer>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const figures = document.querySelectorAll(".figure");
+
+    figures.forEach((figure, index) => {
+
+        const caption = figure.querySelector("figcaption");
+
+        // Automatically number figures
+        caption.innerHTML =
+            "Figure " + (index + 1) + ": " + caption.innerHTML;
+
+        // Assign an ID for referencing
+        figure.id = "fig-" + (index + 1);
+
+    });
+
+});
+</script>
 </body>
 </html>
