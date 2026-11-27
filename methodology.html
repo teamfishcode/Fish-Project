@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code &amp; Methodology | Fish Project</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; color: #222; line-height: 1.6; }
+header { background: #234e70; color: white; padding: 35px 20px; text-align: center; }
+header h1 { margin: 0; }
+nav { background: #16364f; padding: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; }
+nav a { color: white; text-decoration: none; }
+nav a:hover, nav a[aria-current] { text-decoration: underline; }
+main { max-width: 900px; margin: 25px auto; padding: 0 20px; }
+section { background: white; padding: 20px; margin-bottom: 20px; }
+h2 { color: #234e70; margin-top: 0; }
+h3 { margin-top: 25px; }
+a { color: #234e70; }
+.links { display: flex; flex-wrap: wrap; gap: 12px; }
+.links a { background: #234e70; color: white; padding: 9px 14px; text-decoration: none; border-radius: 4px; }
+.workflow { list-style: none; padding: 0; max-width: 430px; margin: 20px auto; text-align: center; }
+.workflow li { background: #edf3f7; border: 1px solid #b4c8d6; padding: 10px; }
+.workflow li+li { margin-top: 24px; position: relative; }
+.workflow li+li::before { content: '↓'; position: absolute; top: -26px; left: 48%; color: #234e70; }
+.equation { background: #f4f6f8; padding: 12px; text-align: center; }
+footer { text-align: center; padding: 20px; color: #555; }
+</style>
+</head>
+<body>
+<header><h1>Zebrafish Heart Rate Group Project</h1></header>
+<nav aria-label="Main navigation">
+<a href="index.html">Home</a><a href="about.html">About</a><a href="project.html">Our Project</a><a href="anatomy.html">Anatomy</a><a href="methodology.html" aria-current="page">Code &amp; Methodology</a>
+</nav>
+<main>
+<section>
+<h2>Code &amp; Methodology</h2>
+<p>The purpose of our Python notebook is to investigate whether heart rate can be extracted automatically from microscope images of freely swimming zebrafish larvae. The current method uses image processing to estimate the position of the heart and Fourier analysis to identify periodic changes in image intensity.</p>
+<p>The notebook is written in Google Colab using OpenCV for image processing, NumPy for numerical analysis and Matplotlib for plotting.</p>
+<div class="links"><a href="https://colab.research.google.com/github/teamfishcode/Fish-Project/blob/main/Zebrafish_Heartbeat_Analysis.ipynb">Open in Google Colab</a><a href="https://github.com/teamfishcode/Fish-Project/blob/main/Zebrafish_Heartbeat_Analysis.ipynb">View code on GitHub</a></div>
+</section>
+<section>
+<h2>Image Analysis Workflow</h2>
+<ol class="workflow"><li>Load microscope images</li><li>Detect potential eye positions</li><li>Estimate the heart region</li><li>Extract mean pixel intensity</li><li>Apply a Fast Fourier Transform</li><li>Estimate heart rate</li></ol>
+<h3>1. Image loading and sampling</h3>
+<p>The notebook reads TIFF images from a shared Google Drive folder. Alternate frames are selected to reduce the amount of data read from Drive. The code assumes an original sampling rate of 30 frames per second, giving an effective sampling rate of 15 frames per second. This assumption must be checked against the acquisition settings.</p>
+<h3>2. Eye detection</h3>
+<p>Grayscale images are thresholded to isolate dark regions. Contours are filtered by area and their centres are calculated using image moments. Two candidate eye positions are used to estimate the midpoint between the eyes.</p>
+<h3>3. Heart region of interest</h3>
+<p>The notebook places a 40 by 40 pixel region of interest approximately 150 pixels below the estimated eye midpoint. This allows the region to follow some movement of the fish, although rotation and changes in orientation are not yet accounted for. If eye detection fails, the current implementation uses a fixed fallback region.</p>
+<h3>4. Intensity signal</h3>
+<p>For each selected image, the mean intensity within the region is recorded. Contraction and relaxation of the heart may produce periodic changes in this signal. However, movement, blood flow and changes in illumination can also affect intensity.</p>
+<h3>5. Fourier analysis</h3>
+<p>A Fast Fourier Transform (FFT) converts the intensity time series into a frequency spectrum. The algorithm searches for the strongest component between 1 and 4 Hz, which is treated as a candidate heartbeat frequency rather than a confirmed measurement.</p>
+<p class="equation">Heart rate (BPM) = 60 &times; peak frequency (Hz)</p>
+<p>For example, a peak at 3.62 Hz would correspond to 217.2 beats per minute. This value is an illustration from the notebook commentary, not a validated result from the saved execution.</p>
+</section>
+<section>
+<h2>Applications and Benefits</h2>
+<p>If validated, this approach could reduce the need to count heartbeats manually across large image datasets. It could also support comparisons of cardiac activity across experimental conditions while avoiding the potential effects of tranquillisation on the measurement.</p>
+<p>The method provides a starting point for combining automated image analysis with physiological measurements and could be extended using machine learning to improve anatomical localisation.</p>
+</section>
+<section>
+<h2>Running the Notebook</h2>
+<ol><li>Open the notebook in Google Colab.</li><li>Mount Google Drive and change the image folder to an accessible directory containing sequential TIFF files.</li><li>Confirm the acquisition frame rate and adjust the effective sampling rate.</li><li>Run the analysis and inspect the resulting frequency spectrum.</li><li>Check that the detected region covers the heart and compare the estimate with a manual measurement.</li></ol>
+<p>The original image dataset is not included in the notebook. Access to suitable images is required to run the analysis. The saved notebook execution currently contains an error caused by the absence of loaded frames.</p>
+</section>
+<section>
+<h2>Limitations and Further Development</h2>
+<p>The current notebook is a prototype based on classical image processing, not a trained machine learning model. Its accuracy depends on reliable eye detection, visibility of the heart and consistent sampling.</p>
+<ul><li>Improve localisation so the heart region follows fish rotation.</li><li>Identify and reject frames where detection fails.</li><li>Account for missing frames and reduce unwanted signal drift.</li><li>Validate estimates against manual heartbeat counts across multiple larvae.</li><li>Investigate segmentation models to improve anatomical tracking.</li></ul>
+</section>
+</main>
+<footer>Fish Project</footer>
+</body>
+</html>
